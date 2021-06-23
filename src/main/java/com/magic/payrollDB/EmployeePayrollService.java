@@ -67,6 +67,21 @@ public class EmployeePayrollService {
         }
         return 0;
     }
+
+    public String findSumOFSalaryFemale() {
+        try {
+            Connection dbConnection = new EmployeeDbConnection().getDBConnection();
+            Statement statement = dbConnection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select SUM(basic_pay) from employee_pay_roll where Gender = 'F' ");
+            resultSet.next();
+            return resultSet.getString(1);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 }
 
 

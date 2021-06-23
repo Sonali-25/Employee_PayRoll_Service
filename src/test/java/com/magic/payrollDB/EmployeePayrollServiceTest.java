@@ -39,8 +39,12 @@ public class EmployeePayrollServiceTest {
         int result=employeePayrollService.findInDateRange();
         Assertions.assertEquals(2,result);
     }
-
-
+    @Test
+    public void given_EmployeePayroll_SumOf_FemaleSalary(){
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        String result = employeePayrollService.findSumOFSalaryFemale();
+        Assertions.assertEquals("160000.0",result);
+    }
 }
 
 

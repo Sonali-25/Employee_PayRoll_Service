@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.magic.payrollDB.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-23T15:42:41" hostname="DESKTOP-0RG9E2N" time="0.817">
+<testsuite name="com.magic.payrollDB.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-23T15:56:18" hostname="DESKTOP-0RG9E2N" time="0.493">
   <properties/>
-  <testcase name="given_EmployeePayroll_Connection_ShouldMatch_EmployeeCounting_InGivenDate()" classname="com.magic.payrollDB.EmployeePayrollServiceTest" time="0.817"/>
+  <testcase name="given_EmployeePayroll_SumOf_FemaleSalary()" classname="com.magic.payrollDB.EmployeePayrollServiceTest" time="0.493"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
