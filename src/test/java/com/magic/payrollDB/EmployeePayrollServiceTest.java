@@ -27,6 +27,13 @@ public class EmployeePayrollServiceTest {
         int result = employeePayrollService.updateEmployeeData("Sonali",60000000);
         Assertions.assertEquals(1,result);
     }
+    @Test
+    public void given_NewSalary_UpdatedUsing_PreparedStatement(){
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        int result= employeePayrollService.updateUsingPreparedStatement(8100000,"Sonam");
+        Assertions.assertEquals(1,result);
+    }
+
 }
 
 

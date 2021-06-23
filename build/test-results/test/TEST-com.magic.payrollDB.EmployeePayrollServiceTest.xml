@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.magic.payrollDB.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-23T15:26:19" hostname="DESKTOP-0RG9E2N" time="4.612">
+<testsuite name="com.magic.payrollDB.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-23T15:35:16" hostname="DESKTOP-0RG9E2N" time="3.306">
   <properties/>
-  <testcase name="given_NewSalary_Updated_Should_syncWithDb()" classname="com.magic.payrollDB.EmployeePayrollServiceTest" time="4.612"/>
+  <testcase name="given_NewSalary_UpdatedUsing_PreparedStatement()" classname="com.magic.payrollDB.EmployeePayrollServiceTest" time="3.306"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
