@@ -33,6 +33,13 @@ public class EmployeePayrollServiceTest {
         int result= employeePayrollService.updateUsingPreparedStatement(8100000,"Sonam");
         Assertions.assertEquals(1,result);
     }
+    @Test
+    public void given_EmployeePayroll_Connection_ShouldMatch_EmployeeCounting_InGivenDate(){
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        int result=employeePayrollService.findInDateRange();
+        Assertions.assertEquals(2,result);
+    }
+
 
 }
 

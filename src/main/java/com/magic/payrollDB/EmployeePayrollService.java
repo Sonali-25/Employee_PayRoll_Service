@@ -27,6 +27,7 @@ public class EmployeePayrollService {
         }
         return employeePayrollList;
     }
+
     public int updateEmployeeData(String name, double salary) {
         String sql = String.format("update employee set salary = %.2f where name ='%s'", salary, name);
         try {
@@ -38,6 +39,7 @@ public class EmployeePayrollService {
         }
         return 0;
     }
+
     public int updateUsingPreparedStatement(double salary, String name) {
         String sql = "update employee set salary=? where name=?";
         try {
@@ -46,6 +48,20 @@ public class EmployeePayrollService {
             ps.setDouble(1, salary);
             ps.setString(2, name);
             return ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int findInDateRange() {
+        String sql = "Select count(*) from employee where start BETWEEN '2019-10-11' AND '2021-06-19'";
+        try {
+            Connection dbConnection = new EmployeeDbConnection().getDBConnection();
+            Statement statement = dbConnection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            resultSet.next();
+            return resultSet.getInt("count(*)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
