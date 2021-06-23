@@ -59,6 +59,13 @@ public class EmployeePayrollServiceTest {
         Assertions.assertEquals("3",result);
 
     }
+    @Test
+    public void given_EmployeePayroll_minimumSalary_OfFemale(){
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        String result = employeePayrollService.findMinimumSalaryOfFemale();
+        Assertions.assertEquals("40000.0",result);
+
+    }
 
 }
 
