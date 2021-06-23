@@ -66,6 +66,13 @@ public class EmployeePayrollServiceTest {
         Assertions.assertEquals("40000.0",result);
 
     }
+    @Test
+    public void given_EmployeePayroll_maximumSalary_OfFemale(){
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        String result = employeePayrollService.findMaximumSalaryOfFemale();
+        Assertions.assertEquals("70000.0",result);
+
+    }
 
 }
 
