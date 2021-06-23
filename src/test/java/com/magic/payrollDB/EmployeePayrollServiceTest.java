@@ -16,10 +16,16 @@ public class EmployeePayrollServiceTest {
         System.out.println(dbConnection);
     }
     @Test
-    public void givenEmployeePayrollConnectionShouldMatchEmployeeCount(){
+    public void given_EmployeePayrollConnection_ShouldMatch_EmployeeCount(){
         EmployeePayrollService employeePayrollService=new EmployeePayrollService();
         List<EmployeePayrollData> employeePayrollData=employeePayrollService.readData();
         Assertions.assertEquals(2,employeePayrollData.size());
+    }
+    @Test
+    public void given_NewSalary_Updated_Should_syncWithDb(){
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        int result = employeePayrollService.updateEmployeeData("Sonali",60000000);
+        Assertions.assertEquals(1,result);
     }
 }
 
