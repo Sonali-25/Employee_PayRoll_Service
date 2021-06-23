@@ -45,6 +45,13 @@ public class EmployeePayrollServiceTest {
         String result = employeePayrollService.findSumOFSalaryFemale();
         Assertions.assertEquals("160000.0",result);
     }
+    @Test
+    public void given_EmployeePayroll_AverageOfSalary_OfFemale(){
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        String result = employeePayrollService.findAVGOFSalaryFeMale();
+        Assertions.assertEquals("53333.333333333336",result);
+
+    }
 }
 
 

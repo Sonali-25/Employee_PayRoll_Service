@@ -82,6 +82,19 @@ public class EmployeePayrollService {
         return null;
 
     }
+    public String findAVGOFSalaryFeMale(){
+        try{
+            Connection dbConnection = new EmployeeDbConnection().getDBConnection();
+            Statement statement = dbConnection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select AVG(basic_pay) from employee_pay_roll where Gender = 'F' ");
+            resultSet.next();
+            return resultSet.getString(1);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
 
