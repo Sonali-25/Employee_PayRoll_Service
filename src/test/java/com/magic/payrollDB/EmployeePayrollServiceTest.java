@@ -52,6 +52,14 @@ public class EmployeePayrollServiceTest {
         Assertions.assertEquals("53333.333333333336",result);
 
     }
+    @Test
+    public void given_EmployeePayroll_count_OfFemale(){
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        String result = employeePayrollService.findCountOFFeMale();
+        Assertions.assertEquals("3",result);
+
+    }
+
 }
 
 
