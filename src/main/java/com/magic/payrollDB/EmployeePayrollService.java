@@ -135,6 +135,17 @@ public class EmployeePayrollService {
         return null;
     }
 
+    public int insertNewPerson(){
+        String sql="INSERT INTO employee VALUES(4,'Sona',500000,'2020-01-01')";
+        try {
+            Connection dbConnection = new EmployeeDbConnection().getDBConnection();
+            Statement statement = dbConnection.createStatement();
+            return statement.executeUpdate(sql);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }
 
 
