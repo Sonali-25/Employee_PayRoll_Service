@@ -74,9 +74,15 @@ public class EmployeePayrollServiceTest {
 
     }
     @Test
-    public void given_EmployeePayroll_connectionCount_employeenSertion(){
+    public void given_EmployeePayroll_connectionCount_employeeInsertion(){
         EmployeePayrollService employeePayrollService=new EmployeePayrollService();
         int result=employeePayrollService.insertNewPerson();
+        Assertions.assertEquals(1,result);
+    }
+    @Test
+    public void given_EmployeePayroll_connectionCount_employeeMultipleInsertion() throws SQLException {
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        int result = employeePayrollService.insertintomultipletables();
         Assertions.assertEquals(1,result);
     }
 

@@ -146,6 +146,23 @@ public class EmployeePayrollService {
         }
         return 0;
     }
+    public int insertintomultipletables() throws SQLException {
+        Connection dbConnection = new EmployeeDbConnection().getDBConnection();
+        try {
+            dbConnection.setAutoCommit(false);
+            Statement statement = dbConnection.createStatement();
+            String sql1="INSERT INTO emp_pay_roll VALUES(6,'Sona','84715751555','Bihar')";
+            statement.executeUpdate(sql1);
+            String sql="INSERT INTO employee VALUES(5,'Sona',500000,'2020-01-01')";
+            statement.executeUpdate(sql);
+            dbConnection.commit();
+            return statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            dbConnection.rollback();
+        }
+        return 0;
+    }
+
 }
 
 
