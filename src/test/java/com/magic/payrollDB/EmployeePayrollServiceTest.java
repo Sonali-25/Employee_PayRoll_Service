@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -100,6 +101,25 @@ public class EmployeePayrollServiceTest {
         employeePayrollService.addEmpToPayroll(Arrays.asList(arrayofEmps));
         Instant end= Instant.now();
         Assertions.assertEquals(3,arrayofEmps.length);
+    }
+    @Test
+    public void given_employess_should_return_entries_using_Threads(){
+        EmployeePayrollData[] arrayofEmps={
+                new EmployeePayrollData(15,"SIDDHARTH",1254102,LocalDate.now()),
+                new EmployeePayrollData(16,"SIDDHARTH R",12544102,LocalDate.now()),
+                new EmployeePayrollData(17,"SID R",12514102,LocalDate.now())
+        };
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        Instant start=Instant.now();
+        employeePayrollService.addEmpToPayroll(Arrays.asList(arrayofEmps));
+        Instant end=Instant.now();
+        System.out.println("Duration without threds" + Duration.between(start,end));
+        Instant threadStart=Instant.now();
+        employeePayrollService.addEmployeesToPayrollwithThreads(Arrays.asList(arrayofEmps));
+        Instant threadEnd=Instant.now();
+        System.out.println("Duration with Threads" +Duration.between(threadStart,threadEnd));
+        Assertions.assertEquals(3,arrayofEmps.length);
+
     }
 
 }

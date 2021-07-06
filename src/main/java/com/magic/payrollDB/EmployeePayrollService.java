@@ -4,7 +4,9 @@ package com.magic.payrollDB;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmployeePayrollService {
     public List<EmployeePayrollData> readData() {
@@ -173,6 +175,26 @@ public class EmployeePayrollService {
     private void addEmpToPayroll(int id, String name, double salary, LocalDate startDate) {
         List<EmployeePayrollData> employeePayrollList = new ArrayList<>();
         employeePayrollList.add(new EmployeePayrollData(id, name, salary, startDate));
+    }
+    public void addEmployeesToPayrollwithThreads(List<EmployeePayrollData> employeePayrollDataList){
+        Map<Integer,Boolean> employeeAdditionStatus = new HashMap<Integer,Boolean>();
+        employeePayrollDataList.forEach(employeePayrollData ->{
+            Runnable task=()->{
+                employeeAdditionStatus.put(employeePayrollData.hashCode(),false);
+                this.addEmpToPayroll(employeePayrollData.id, employeePayrollData.name,
+                        employeePayrollData.salary, employeePayrollData.startDate);
+                employeeAdditionStatus.put(employeePayrollData.hashCode(),true);
+
+            };
+            Thread thread= new Thread(task,employeePayrollData.name);
+            thread.start();
+        });
+        while(employeeAdditionStatus.containsValue(false)){
+            try{
+                Thread.sleep(10);
+            }catch (InterruptedException e){}
+        }
+//        System.out.println(this.employeePayrollData);
     }
 
 }
