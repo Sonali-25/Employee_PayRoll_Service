@@ -60,4 +60,28 @@ public class RestAPITest {
         long entries = employeeRepo.countEntries();
         Assertions.assertEquals(3, entries);
     }
+    @Test
+    public void givenListOfNewEmployee_WhenAdded_ShouldMatch201ResponseAndCount()
+    {
+        Employee[] arrayOfEmps = getEmployeeList();
+        EmployeeRepo employeeRepo;
+        employeeRepo = new EmployeeRepo(Arrays.asList(arrayOfEmps));
+
+        Employee[] arrayOfEmpPayrolls = {
+                new Employee( 0,"Mark","Smith", 600000),
+                new Employee(0, "Gary","Lu", 1000000),
+                new Employee(0, "Sam", "Pichai", 200000)
+        };
+        for(Employee employeePayroll : arrayOfEmpPayrolls)
+        {
+            Response response = addEmployeeToJSONServer(employeePayroll);
+            int statusCode = response.getStatusCode();
+            Assertions.assertEquals(201, statusCode);
+
+            employeePayroll = new Gson().fromJson(response.asString(), Employee.class);
+            employeeRepo.addEmployeeToPayroll(employeePayroll);
+        }
+        long entries = employeeRepo.countEntries();
+        Assertions.assertEquals(8, entries);
+    }
 }
