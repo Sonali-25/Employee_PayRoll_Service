@@ -102,4 +102,15 @@ public class RestAPITest {
                 statusCode(200).
                 log().all();
     }
+    @Test
+    public void deleteMultipleDatafromExistingRecord_shouldReturn_200statusCode() {
+        baseURI ="http://localhost";
+        port = 4000;
+
+        when().
+                delete("/employee/6").
+                then().
+                statusCode(200).
+                log().all();
+    }
 }
