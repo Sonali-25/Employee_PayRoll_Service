@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -82,8 +85,21 @@ public class EmployeePayrollServiceTest {
     @Test
     public void given_EmployeePayroll_connectionCount_employeeMultipleInsertion() throws SQLException {
         EmployeePayrollService employeePayrollService=new EmployeePayrollService();
-        int result = employeePayrollService.insertintomultipletables();
+        int result = employeePayrollService.insertIntoMultipleTables();
         Assertions.assertEquals(1,result);
+    }
+    @Test
+    public void given_employess_should_return_entries(){
+        EmployeePayrollData[] arrayofEmps={
+                new EmployeePayrollData(15,"SIDDHARTH",1254102,LocalDate.now()),
+                new EmployeePayrollData(16,"SIDDHARTH R",12544102,LocalDate.now()),
+                new EmployeePayrollData(17,"SID R",12514102, LocalDate.now())
+        };
+        EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+        Instant start=Instant.now();
+        employeePayrollService.addEmpToPayroll(Arrays.asList(arrayofEmps));
+        Instant end= Instant.now();
+        Assertions.assertEquals(3,arrayofEmps.length);
     }
 
 }

@@ -146,7 +146,7 @@ public class EmployeePayrollService {
         }
         return 0;
     }
-    public int insertintomultipletables() throws SQLException {
+    public int insertIntoMultipleTables() throws SQLException {
         Connection dbConnection = new EmployeeDbConnection().getDBConnection();
         try {
             dbConnection.setAutoCommit(false);
@@ -161,6 +161,18 @@ public class EmployeePayrollService {
             dbConnection.rollback();
         }
         return 0;
+    }
+    public void addEmpToPayroll(List<EmployeePayrollData> employeePayrollDataList) {
+        employeePayrollDataList.forEach(employeePayrollData -> {
+            this.addEmpToPayroll(employeePayrollData.id, employeePayrollData.name,
+                    employeePayrollData.salary, employeePayrollData.startDate);
+            System.out.println("Employee Added: " +employeePayrollData.id);
+        });
+    }
+
+    private void addEmpToPayroll(int id, String name, double salary, LocalDate startDate) {
+        List<EmployeePayrollData> employeePayrollList = new ArrayList<>();
+        employeePayrollList.add(new EmployeePayrollData(id, name, salary, startDate));
     }
 
 }
