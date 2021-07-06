@@ -194,7 +194,6 @@ public class EmployeePayrollService {
                 Thread.sleep(10);
             }catch (InterruptedException e){}
         }
-//        System.out.println(this.employeePayrollData);
     }
 
 }
