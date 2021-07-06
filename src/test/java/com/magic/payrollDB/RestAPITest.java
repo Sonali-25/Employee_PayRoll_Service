@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
+import jdk.jfr.ContentType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -83,5 +84,22 @@ public class RestAPITest {
         }
         long entries = employeeRepo.countEntries();
         Assertions.assertEquals(8, entries);
+    }
+    @Test
+    public void updateExistingRecord_shouldReturn_200statusCode() {
+        JSONObject request = new JSONObject();
+        request.put("basicPay", 50000 );
+        baseURI ="http://localhost";
+        port = 4000;
+        given().
+                contentType(ContentType.JSON).
+                accept(ContentType.JSON).
+                header("Content-Type", "application/json").
+                body(request.toJSONString()).
+                when().
+                patch("/employee/3").
+                then().
+                statusCode(200).
+                log().all();
     }
 }
